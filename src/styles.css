@@ -1,0 +1,17 @@
+/* You can add global styles to this file, and also import other style files */
+* {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+h1 {
+  font-family: 'Playfair Display', serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+h2 {
+  font-family: 'Roboto Mono', monospace;
+  font-optical-sizing: auto;
+  font-style: normal;
+}

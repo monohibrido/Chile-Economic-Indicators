@@ -1,0 +1,91 @@
+<div class="divValorPorRango">
+  <h2 class="text-center">Busca un valor por Rango de fecha</h2>
+  <form class="row g-3" (ngSubmit)="consultarRango()">
+    <div class="col-auto">
+      <select
+        class="form-select"
+        aria-label="Default select example"
+        [(ngModel)]="indicador"
+        name="indicador"
+      >
+        <option value="" selected>Elige el indicador</option>
+        <option value="uf">uf</option>
+        <option value="ivp">ivp</option>
+        <option value="dolar">dolar</option>
+        <option value="dolar_intercambio">dolar intercambio</option>
+        <option value="euro">euro</option>
+        <option value="ipc">ipc</option>
+        <option value="utm">utm</option>
+        <option value="imacec">imacec</option>
+        <option value="tpm">tpm</option>
+        <option value="libra_cobre">libra cobre</option>
+        <option value="tasa_desempleo">tasa desempleo</option>
+        <option value="bitcoin">bitcoin</option>
+      </select>
+    </div>
+    <div class="col-md-4 col-9">
+      <div class="col-auto">
+        <label for="inputFechaInicio" class="visually">Fecha de inicio</label>
+        <input
+          type="date"
+          class="form-control"
+          id="inputFechaInicio"
+          [(ngModel)]="fecha_inicio"
+          name="fecha_inicio"
+          placeholder="Ejemplo: dd/mm/aaaa"
+        />
+      </div>
+      <div class="col-auto">
+        <label for="inputFechaTermino" class="visually">Fecha de término</label>
+        <input
+          type="date"
+          class="form-control"
+          id="inputFechaTermino"
+          [(ngModel)]="fecha_termino"
+          name="fecha_termino"
+          placeholder="Ejemplo: dd/mm/aaaa"
+        />
+      </div>
+    </div>
+
+    <div class="col-auto">
+      <button
+        type="submit"
+        class="btn btn-primary mb-3"
+        [disabled]="!indicador || !fecha_inicio || fecha_termino!"
+      >
+        Buscar valores
+      </button>
+    </div>
+    <div class="col-auto">
+      <button type="button" class="btn btn-primary mb-3" (click)="limpiarCampos()">Limpiar</button>
+    </div>
+  </form>
+
+  <div class="tablaValorPorRango mt-5">
+    @if (resultados && resultados.length > 0) {
+      <div class="col-md-8 mx-auto">
+        <div class="table-responsive-md">
+          <table class="table table-dark table-striped">
+            <thead>
+              <tr>
+                <th>FECHA</th>
+                <th>VALOR</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of resultados">
+                <td>{{ item.fecha | date: 'dd-MM-yyyy' }}</td>
+                <td>{{ item.valor }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    } @else if (errorMsg) {
+      <div class="alert alert-danger text-center" role="alert">{{ errorMsg }}</div>
+    } @else {
+      <p class="text-center">Selecciona un indicador y una fecha</p>
+    }
+  </div>
+</div>

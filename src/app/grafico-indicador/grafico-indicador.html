@@ -1,0 +1,54 @@
+<div class="divValorEnGrafico">
+  <h2 class="text-center">Gráfico de un valor por año</h2>
+  <form class="row g-3" (ngSubmit)="consultarAnio()">
+    <div class="col-auto">
+      <select class="form-select" [(ngModel)]="indicador" name="indicador" required>
+        <option value="" selected disabled>Elige el indicador</option>
+        <option value="uf">UF</option>
+        <option value="ivp">IVP</option>
+        <option value="dolar">Dólar</option>
+        <option value="euro">Euro</option>
+        <option value="ipc">IPC</option>
+        <option value="utm">UTM</option>
+        <option value="bitcoin">Bitcoin</option>
+      </select>
+    </div>
+
+    <div class="col-auto">
+      <input
+        type="number"
+        class="form-control"
+        [(ngModel)]="anio"
+        name="anio"
+        placeholder="Ej: 2024"
+        required
+      />
+    </div>
+
+    <div class="col-auto">
+      <button type="submit" class="btn btn-primary" [disabled]="!indicador || !anio || cargando()">
+        {{ cargando() ? 'Buscando...' : 'Buscar valores' }}
+      </button>
+    </div>
+
+    <div class="col-auto">
+      <button type="button" class="btn btn-secondary" (click)="limpiarCampos()">Limpiar</button>
+    </div>
+  </form>
+
+  <div class="mt-4">
+    @if (errorMsg()) {
+      <div class="alert alert-danger text-center" role="alert">
+        {{ errorMsg() }}
+      </div>
+    }
+
+    <div class="divRespuestaGrafico" [hidden]="!resultados()">
+      <canvas #miGrafico></canvas>
+    </div>
+
+    @if (!resultados() && !errorMsg() && !cargando()) {
+      <p class="text-center mt-5">Selecciona un indicador y un año para visualizar el gráfico.</p>
+    }
+  </div>
+</div>

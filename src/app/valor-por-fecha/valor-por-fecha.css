@@ -1,0 +1,14 @@
+.divValorPorFecha {
+  color: #ffffff;
+  background-color: #2b2f34;
+  border-radius: 15px;
+}
+
+.tablaValorPorFecha {
+  padding-bottom: 10px;
+  border-color: #2b2f34;
+}
+
+#parrafo_alert {
+  color: #ffffff;
+}

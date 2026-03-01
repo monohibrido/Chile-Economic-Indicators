@@ -1,0 +1,78 @@
+<div class="divValorPorFecha">
+  <h2 class="text-center">Busca un valor por fecha</h2>
+  <form class="row g-3" (ngSubmit)="consultar()">
+    <div class="col-auto">
+      <select class="form-select" [(ngModel)]="indicador" name="indicador" required>
+        <option value="" selected>Elige el indicador</option>
+        <option value="uf">UF</option>
+        <option value="ivp">IVP</option>
+        <option value="dolar">Dólar</option>
+        <option value="dolar_intercambio">Dólar Intercambio</option>
+        <option value="euro">Euro</option>
+        <option value="ipc">IPC</option>
+        <option value="utm">UTM</option>
+        <option value="imacec">IMACEC</option>
+        <option value="tpm">TPM</option>
+        <option value="libra_cobre">Libra Cobre</option>
+        <option value="tasa_desempleo">Tasa Desempleo</option>
+        <option value="bitcoin">Bitcoin</option>
+      </select>
+    </div>
+    <div class="col-auto">
+      <input
+        type="date"
+        class="form-control"
+        id="inputFecha"
+        [(ngModel)]="fecha"
+        name="fecha"
+        required
+      />
+    </div>
+    <div class="col-auto">
+      <button type="submit" class="btn btn-primary mb-3" [disabled]="!indicador || !fecha">
+        Buscar valor
+      </button>
+    </div>
+    <div class="col-auto">
+      <button type="button" class="btn btn-secondary mb-3" (click)="limpiarCampos()">
+        Limpiar
+      </button>
+    </div>
+  </form>
+
+  <div class="tablaValorPorFecha mt-4">
+    @if (resultados()) {
+      <div class="col-md-8 mx-auto">
+        <div class="table-responsive-md">
+          <table class="table table-dark table-striped">
+            <thead>
+              <tr>
+                <th>INDICADOR</th>
+                <th>UNIDAD</th>
+                <th>FECHA</th>
+                <th>VALOR</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>{{ resultados()?.nombre }}</td>
+                <td>{{ resultados()?.unidad_medida }}</td>
+
+                <td>{{ resultados()?.serie?.[0]?.fecha | date: 'dd-MM-yyyy' : 'UTC' }}</td>
+                <td>{{ resultados()?.serie?.[0]?.valor | number: '1.2-2' }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    } @else if (errorMsg()) {
+      <div class="alert alert-danger text-center" role="alert">
+        {{ errorMsg() }}
+      </div>
+    } @else {
+      <p class="text-center" id="parrafo_alert">
+        Selecciona un indicador y una fecha para comenzar.
+      </p>
+    }
+  </div>
+</div>

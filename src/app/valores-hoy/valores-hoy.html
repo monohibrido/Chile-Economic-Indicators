@@ -1,0 +1,32 @@
+<div class="tablaValoresHoy mb-3">
+  @if (datos()) {
+    <h2 class="text-center">Valores hoy: {{ datos()?.fecha | date: 'dd-MM-yyyy' }}</h2>
+
+    <div class="col-12 col-md-10 col-lg-8 mx-auto">
+      <div class="table-responsive-md">
+        <table class="table table-dark table-striped">
+          <thead>
+            <tr>
+              <th>DOLAR</th>
+              <th>UF</th>
+              <th>UTM</th>
+              <th>EURO</th>
+              <th>TASA DESEMPLEO</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>${{ datos()?.dolar?.valor }}</td>
+              <td>${{ datos()?.uf?.valor }}</td>
+              <td>${{ datos()?.utm?.valor }}</td>
+              <td>${{ datos()?.euro?.valor }}</td>
+              <td>{{ datos()?.tasa_desempleo?.valor }}%</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  } @else {
+    <p class="text-center">Cargando datos...</p>
+  }
+</div>

@@ -1,0 +1,12 @@
+.table {
+  width: 100%;
+}
+
+.tablaValoresHoy {
+  background-color: #2b2f34;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #ffffffff;
+  border-radius: 15px;
+}

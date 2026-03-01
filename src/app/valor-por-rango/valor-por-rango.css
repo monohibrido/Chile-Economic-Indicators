@@ -1,0 +1,25 @@
+.divValorPorRango {
+  background-color: #2b2f34;
+  color: #ffffff;
+  border-radius: 15px;
+  padding-bottom: 10px;
+}
+
+table {
+  margin-top: 10px;
+}
+table thead tr th,
+table tbody tr td {
+  color: #ffffff;
+}
+
+button {
+  background-color: #212529;
+  border-color: #212529;
+}
+
+#inputFechaInicio,
+#inputFechaTermino {
+  padding-right: 30px;
+  margin-right: 10px;
+}
