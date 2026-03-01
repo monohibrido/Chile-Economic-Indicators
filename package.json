@@ -5,6 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "deploy": "ng build --configuration production --base-href /mi-app-angular/ && npx gh-pages -d dist/mi-app-angular",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve:ssr:version2.0": "node dist/version2.0/server/server.mjs"
@@ -48,6 +49,7 @@
     "@types/express": "^5.0.1",
     "@types/node": "^20.17.19",
     "angular-cli-ghpages": "^3.0.2",
+    "gh-pages": "^6.3.0",
     "jsdom": "^27.1.0",
     "typescript": "~5.9.2",
     "vitest": "^4.0.8"
