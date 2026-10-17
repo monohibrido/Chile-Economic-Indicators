@@ -1,0 +1,11 @@
+@import 'tailwindcss';
+
+/* Tailwind v4: los "tokens" del tema se declaran en CSS con @theme.
+   Esto reemplaza lo que antes hacías en styles.css (h1 Playfair, h2 Roboto Mono)
+   y genera las clases font-titulo / font-subtitulo / bg-tarjeta. */
+@theme {
+  --font-titulo: 'Playfair Display', serif;
+  --font-subtitulo: 'Roboto Mono', monospace;
+  --color-tarjeta: #2b2f34;
+  --color-boton: #212529;
+}
